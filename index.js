@@ -14,6 +14,7 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const dataRefRequests = database.ref("Requests");
 const dataRefTL = database.ref("RPITL");
+const dataLog = database.ref("logs");
 
 const buttonA = document.getElementById("toggle-btnA");
 const buttonB = document.getElementById("toggle-btnB");
@@ -21,6 +22,7 @@ const buttonC = document.getElementById("toggle-btnC");
 const buttonD = document.getElementById("toggle-btnD");
 
 const MAX_LOG_MESSAGES = 100; // Maximum number of log messages to display
+
 const log = document.getElementById("log");
 
 function logMessage(message) {
@@ -29,11 +31,16 @@ function logMessage(message) {
     const logText = `${timestamp}: ${message}<br>`;
     log.innerHTML += logText;
 
-    // Remove the oldest log message if the maximum number of messages is exceeded
-    const logMessages = log.getElementsByTagName("div");
-    if (logMessages.length > MAX_LOG_MESSAGES) {
-    log.removeChild(logMessages[0]);
-    }
+    dataLog.update({
+        logString: log.innerHTML,
+      })
+      .then(() => {
+        console.log("Update successful");
+      })
+      .catch((error) => {
+        console.error("Update failed: ", error);
+      });
+
 
     // Scroll to the bottom of the log
     log.scrollTop = log.scrollHeight - log.clientHeight;
@@ -53,6 +60,11 @@ dataRefTL.on('value', (snapshot) => {
     document.getElementById("desired-fan-speed").innerHTML = value.desiredFanSpeed;  
 
 
+});
+
+dataLog.on('value', (snapshot) => {
+    var value = snapshot.val();
+    log.innerHTML = value.logString;
 });
 
 dataRefRequests.once('value').then(function(snapshot) {
@@ -245,6 +257,30 @@ buttonA.addEventListener("click", function() {
           .catch((error) => {
             console.error("Update failed: ", error);
           });
+  });
+
+
+  const clear = document.getElementById("toggle-btn-clear-log");
+
+  clear.addEventListener("click", () => {
+    clear.innerHTML = "Cleared!";
+    clear.classList.add("active");
+
+
+    dataLog.update({
+        logString: "",
+      })
+      .then(() => {
+        console.log("Update successful");
+      })
+      .catch((error) => {
+        console.error("Update failed: ", error);
+      });
+
+  setTimeout(() => {
+    clear.innerHTML = "Clear Log";
+    clear.classList.remove("active");
+  }, 1000);
   });
 
   function changeColor(element) {

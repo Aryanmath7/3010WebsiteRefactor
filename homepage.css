@@ -135,11 +135,30 @@
     font-size: 15px;
     font-weight: 700;
     color: #ffffff76; /* White text */
-    border: none; /* Remove     border */
+    border: none;
     margin: 2%;
     padding: 10px 20px; /* Add some padding */
     cursor: pointer; /* Add cursor on hover */
   }
+
+  #toggle-btn-clear-log{
+    width: 85px;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #000000;
+    color: #ffffff76; /* Green text */
+    border: 2px solid #ffffff;
+    margin: 2%;
+    cursor: pointer; /* Add cursor on hover */
+  }
+
+  #toggle-btn-clear-log.active{
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #4CAF50;
+
+  }
+
   
   #toggle-btnA.on,
   #toggle-btnB.on,
