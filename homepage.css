@@ -222,3 +222,13 @@
     color: #4CAF50;
     font-weight: bold;
   }
+
+  img {
+    max-width: 80%;
+    height: auto;
+  }
+
+  #my-image{
+    margin-left: 10%;
+  }
+

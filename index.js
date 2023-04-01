@@ -15,6 +15,7 @@ const database = firebase.database();
 const dataRefRequests = database.ref("Requests");
 const dataRefTL = database.ref("RPITL");
 const dataLog = database.ref("logs");
+const dataRT = database.ref("videoStream");
 
 const buttonA = document.getElementById("toggle-btnA");
 const buttonB = document.getElementById("toggle-btnB");
@@ -66,6 +67,49 @@ dataLog.on('value', (snapshot) => {
     var value = snapshot.val();
     log.innerHTML = value.logString;
 });
+
+// dataRT.on('value', (snapshot) => {
+//     var value = snapshot.val();
+//     console.log(value.realTimeScreenshot);
+    
+//     var imageElement = document.getElementById("my-image");
+    
+//     var screenshotB64 = value.realTimeScreenshot;
+//     var screenshotBytes = Uint8Array.from(atob(screenshotB64), c => c.charCodeAt(0));
+//     var screenshotBlob = new Blob([screenshotBytes], { type: 'image/png' });
+//     var screenshotUrl = URL.createObjectURL(screenshotBlob);
+    
+//     imageElement.src = screenshotUrl;
+// });
+
+var imageElement = document.getElementById("my-image");
+
+function getImage() {
+    $.ajax({
+        type: 'GET',
+        url: 'http://127.0.0.1:5000/get_base64_image',
+        success: function(response) {
+            // Decode the base64-encoded image data
+            console.log(response.encoded_image);
+            var decoded_image_data = atob(response.encoded_image);
+
+            // Create an Image object from the decoded data
+            var img = new Image();
+            imageElement.src = 'data:image/jpeg;base64,' + response.encoded_image;
+
+            // Append the image to the DOM
+            document.body.appendChild(img);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
+
+setInterval(getImage, 1);
+
+
+
 
 dataRefRequests.once('value').then(function(snapshot) {
     var value = snapshot.val();
@@ -308,4 +352,7 @@ buttonA.addEventListener("click", function() {
         console.error("Update failed: ", error);
       });   
   }
+
+  
+
 
