@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+</head>
+<body class = "page">
+    <div class="topnav">
+        <b class="title" onclick="changeColor(this)">HomePi Manual</b> 
+    </div>
+    <br></br>
+
+    <div style = "display: flex; flex-direction: row;">
+        <div id = "obs"> 
+            <div id = "thermo">
+                <h1>Statistics</h1>
+
+                <table>
+                    <tr>
+                      <td style="width: 90%;"><h3>Current Temperature:</h3></td>
+                      <td style="width: 10%;"><h5 id = "temp-container"></h5></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 90%;"><h3>Current Fan Speed:</h3></td>
+                        <td style="width: 10%;"><h5 id = "fan-speed"></h5>
+                    </tr>
+                    <tr>
+                      <td style="width: 90%;"><h3>Heater Status:</h3></td>
+                      <td style="width: 10%;"><h5 id = "heater-state"></h5></td>
+                    </tr>
+                    <tr>
+                      <td style="width: 90%;"><h3>Light Status:</h3></td>
+                      <td style="width: 10%;"><h5 id = "light-state"></h5></td>
+                    </tr>
+
+
+                    <tr>
+                        <td style="width: 90%;"><h3>Desired Temperature:</h3></td>
+                        <td style="width: 10%;"><h5 id = "desired-temp-container"></h5></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 90%;"><h3>Desired Fan Speed:</h3></td>
+                        <td style="width: 10%;"><h5 id = "desired-fan-speed"></h5>
+                    </tr>
+
+                  </table>
+            </div>
+        
+            <div id = "webcam">
+                <h1>Webcam</h1>
+            </div>
+        </div>
+    
+        <div style = "display: flex; flex-direction: column; width: 50%;">
+            <div id = "controls">
+                <h1>Controls</h1>
+                <div style = "display: flex; flex-direction: row;">
+                    <div style = "margin-left: 5px; margin-right: 20px; display: flex; align-items: flex-start;  justify-content: flex-start; flex-direction: column;">
+                        <button id="toggle-btnA" class="off">Off</button>
+                        <h3 style = "margin: 0 auto;">Heater</h3>
+                    </div>
+    
+                    <div style = "margin-right: 20px; display: flex; align-items: flex-start;  justify-content: flex-start; flex-direction: column;">
+                        <button id="toggle-btnC" class="off">Off</button>
+                        <div style = "margin: 0 auto;"><h3>Lights</h3></div>
+                    </div>
+    
+                    <div style = "margin-right: 20px; display: flex; align-items: flex-start;  justify-content: flex-start; flex-direction: column;">
+                        <button id="toggle-btnD" class="off">Unlocked</button>
+                        <div style = "margin: 0 auto;"><h3>Lock</h3></div>  
+                    </div>
+                    
+    
+                </div>
+    
+                <div class="slider-container">
+                    <h3 for="slider">FanSpeed:</h3>
+                    <input type="range" id="sliderA" min="0" max="100" value="50">
+                    <span id="slider-valueA"></span><span id="sliderVal">%</span>
+                </div>
+    
+                <div class="slider-container">
+                    <h3 for="slider">Temperature:</h3>
+                    <input type="range" id="sliderB" min="18" max="27" value="22">
+                    <span id="slider-valueB">50</span><span id="sliderVal">°c</span>
+                </div>
+                
+                
+    
+                
+    
+    
+            </div>
+    
+            <div id = "console">
+                <h1>Console</h1>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+<script src="index.js"></script>
+</body>
+</html>
+
+

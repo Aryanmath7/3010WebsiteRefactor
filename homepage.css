@@ -1,0 +1,187 @@
+/* Add a black background color to the top navigation */
+.page{
+    background-color: #000000;
+    font-family: sans-serif;
+}
+
+.topnav {
+    
+    background-color: #000000;
+    overflow: hidden;
+    border: 5px solid #000000;
+
+  }
+  
+  .topnav b{
+    float: left;
+    color: #4CAF50;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 50px;
+    border: 5px solid #ffffff;
+}
+
+.title.clicked {
+    color: rgb(255, 255, 255);
+  }
+
+.title:hover {
+    cursor: pointer;
+}
+
+ #obs {
+    margin: auto;
+    width: 50%;
+ }
+
+  #thermo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 300px;
+    background-color: #ffffff11;
+    box-sizing: border-box;
+    border: 5px solid #ffffff76;
+
+  } 
+
+  #webcam{
+    width: 100%;
+    background-color: #ffffff11;
+    height: 500px;
+    box-sizing: border-box;
+    border: 5px solid #ffffff76;
+
+  }
+
+  #controls{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: auto;
+    background-color: #ffffff11;
+    height: 300px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 5px solid #ffffff76;
+
+  }
+
+  #console{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: auto;
+    background-color: #ffffff11;
+    height: 500px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 5px solid #ffffff76;
+  }
+
+  h1 {
+    float: left;
+    width: fit-content;
+    margin: 1.5%;
+    color: #ffffff;
+    font-size: 20px;
+  }
+
+  h3{    
+    margin: 1.5%;
+    color: #ffffff76;
+    font-size: 17px;
+  }
+
+  h4{
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  h5{
+    font-size: 17px;
+    margin: 1.5%;
+    color: #4CAF50;
+  }
+
+  #toggle-btnA,
+  #toggle-btnB,
+  #toggle-btnC,
+  #toggle-btnD
+   {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff76; /* White text */
+    border: none; /* Remove     border */
+    margin: 2%;
+    padding: 10px 20px; /* Add some padding */
+    cursor: pointer; /* Add cursor on hover */
+  }
+  
+  #toggle-btnA.on,
+  #toggle-btnB.on,
+  #toggle-btnC.on,
+  #toggle-btnD.on {
+    font-size: 15px;
+    border: 5px solid #ffffff;
+    color:#ffffff;
+    background-color: #4CAF50; /* Blue background */
+  }
+
+  #toggle-btnA.off,
+  #toggle-btnB.off,
+  #toggle-btnC.off,
+  #toggle-btnD.off{
+    font-size: 15px;
+    border: 5px solid #4CAF50;
+    background-color: #000000; /* Blue background */
+  }
+
+  .slider-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  input[type="range"] {
+    width: 200px;
+    margin-right: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #ffffff76;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+  }
+  
+  #slider-valueA,
+  #slider-valueB {
+    color: #4CAF50;
+    font-weight: bold;
+  }
+
+  #sliderVal{
+    color: #4CAF50;
+    font-weight: bold;
+  }
