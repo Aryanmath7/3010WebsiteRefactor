@@ -87,7 +87,7 @@ var imageElement = document.getElementById("my-image");
 function getImage() {
     $.ajax({
         type: 'GET',
-        url: 'http://172.17.62.109:5000/get_base64_image',
+        url: 'https://homepivideofeed.com:5000/get_base64_image',
         success: function(response) {
             // Decode the base64-encoded image data
             console.log(response.encoded_image);
