@@ -20,6 +20,28 @@ const buttonB = document.getElementById("toggle-btnB");
 const buttonC = document.getElementById("toggle-btnC");
 const buttonD = document.getElementById("toggle-btnD");
 
+const MAX_LOG_MESSAGES = 100; // Maximum number of log messages to display
+const log = document.getElementById("log");
+
+function logMessage(message) {
+    const now = new Date();
+    const timestamp = now.toLocaleString();
+    const logText = `${timestamp}: ${message}<br>`;
+    log.innerHTML += logText;
+
+    // Remove the oldest log message if the maximum number of messages is exceeded
+    const logMessages = log.getElementsByTagName("div");
+    if (logMessages.length > MAX_LOG_MESSAGES) {
+    log.removeChild(logMessages[0]);
+    }
+
+    // Scroll to the bottom of the log
+    log.scrollTop = log.scrollHeight - log.clientHeight;
+}
+
+
+
+
 dataRefTL.on('value', (snapshot) => {
     var value = snapshot.val();
     // Display the value on the HTML page
@@ -93,6 +115,7 @@ sliderA.oninput = function() {
         })
         .then(() => {
           console.log("Update successful");
+          logMessage("Desired Fan Speed updated to: " + this.value);
         })
         .catch((error) => {
           console.error("Update failed: ", error);
@@ -113,6 +136,8 @@ sliderB.oninput = function() {
           })
           .then(() => {
             console.log("Update successful");
+            logMessage("Desired Temperature updated to: " + this.value);
+
           })
           .catch((error) => {
             console.error("Update failed: ", error);
@@ -149,6 +174,7 @@ buttonA.addEventListener("click", function() {
           })
           .then(() => {
             console.log("Update successful");
+            logMessage("Desired heater status updated to: " + String(heatBoolean));
           })
           .catch((error) => {
             console.error("Update failed: ", error);
@@ -182,6 +208,7 @@ buttonA.addEventListener("click", function() {
           })
           .then(() => {
             console.log("Update successful");
+            logMessage("Desired light status updated to: " + String(lightBoolean));
           })
           .catch((error) => {
             console.error("Update failed: ", error);
@@ -213,6 +240,7 @@ buttonA.addEventListener("click", function() {
           })
           .then(() => {
             console.log("Update successful");
+            logMessage("Desired lock status updated to: " + buttonD.textContent);
           })
           .catch((error) => {
             console.error("Update failed: ", error);
@@ -226,11 +254,13 @@ buttonA.addEventListener("click", function() {
         buttonA.textContent = "Off";
         buttonC.textContent = "Off";
         isManual = true;
+        logMessage("Mode changed to: " + element.textContent);
     } else {
         element.textContent = "HomePi Automatic";
         buttonA.textContent = "Auto";
         buttonC.textContent = "Auto";
         isManual = false;
+        logMessage("Mode changed to: " + element.textContent);
     }
     dataRefRequests.update({
         isAuto: !isManual,
@@ -242,3 +272,4 @@ buttonA.addEventListener("click", function() {
         console.error("Update failed: ", error);
       });   
   }
+
