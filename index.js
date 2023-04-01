@@ -87,7 +87,7 @@ var imageElement = document.getElementById("my-image");
 function getImage() {
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5000/get_base64_image',
+        url: 'http://172.17.62.109:5000/get_base64_image',
         success: function(response) {
             // Decode the base64-encoded image data
             console.log(response.encoded_image);
@@ -106,7 +106,7 @@ function getImage() {
     });
 }
 
-setInterval(getImage, 1);
+setInterval(getImage, 100);
 
 
 
