@@ -185,7 +185,7 @@ var sliderValueB = document.getElementById("slider-valueB");
 sliderValueB.innerHTML = sliderB.value; // Set the initial value of the slider
 
 sliderB.oninput = function() {
-    if (isManual) {
+    if (!isManual) {
         sliderValueB.innerHTML = this.value; // Update the slider value in real-time
         dataRefRequests.update({
             desiredTempA: Number(this.value),
