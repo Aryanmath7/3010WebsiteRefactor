@@ -1,0 +1,267 @@
+/* Add a black background color to the top navigation */
+.page {
+  background-color: #000000;
+	font-family: Courier, monospace;
+}
+
+.topnav {
+  margin: auto;
+  background-color: #000000;
+  overflow: hidden;
+  margin-bottom: 1%;
+}
+
+.topnav b {
+  float: left;
+  color: #00ff00;
+  text-align: center;
+  padding: 14px 16px;
+  font-weight: 500;
+  font-size: 50px;
+  border: 2px solid #00ff00;
+}
+
+.title.clicked {
+  color: rgb(255, 255, 255);
+}
+
+.title:hover {
+  cursor: pointer;
+}
+
+#obs {
+  margin: auto;
+  width: 50%;
+}
+
+#thermo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 230px;
+  background-color: #000000;
+  box-sizing: border-box;
+  border: 2px solid #00ff00;
+}
+
+#webcam {
+  width: 100%;
+  background-color: #000000;
+  height: 500px;
+  box-sizing: border-box;
+  border: 2px solid #00ff00;
+}
+
+#controls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: auto;
+  background-color: #000000;
+  height: 230px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #00ff00;
+}
+
+#console {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: auto;
+  background-color: #000000;
+  height: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #00ff00;
+}
+
+#log-container {
+  height: 450px;
+  width: 94%;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border: 2px solid #00ff00;
+  margin-left: 12px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#log-container::-webkit-scrollbar {
+  width: 10px; /* set the width of the scrollbar */
+}
+
+#log-container::-webkit-scrollbar-track {
+  margin-right: 1%;
+  background-color: #000000; /* set the background color of the track */
+}
+
+#log-container::-webkit-scrollbar-thumb {
+  margin-right: 1%;
+  background-color: #00ff00; /* set the color of the thumb */
+  border-radius: 1px; /* round the corners of the thumb */
+}
+
+#log {
+  margin-top: -35px;
+  color: #ffffff76;
+  font-size: 17px;
+}
+
+h1 {
+  float: left;
+  width: fit-content;
+  margin: 1.5%;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+h3 {
+  margin: 1.5%;
+  color: #ffffff76;
+  font-size: 17px;
+}
+
+h4 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 17px;
+  margin: 1.5%;
+  color: #00ff00;
+}
+
+#toggle-btnA,
+#toggle-btnB,
+#toggle-btnC,
+#toggle-btnD {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: Courier, monospace;
+  color: #ffffff76; /* White text */
+  border: none;
+  margin: 2%;
+  padding: 10px 20px; /* Add some padding */
+  cursor: pointer; /* Add cursor on hover */
+}
+
+#toggle-btn-clear-log {
+  width: 120px;
+  font-size: 15px;
+  font-weight: 400;
+  background-color: #000000;
+  color: #00ff00;
+  border: 2px solid #ffffff;
+  margin: 2%;
+  cursor: pointer; /* Add cursor on hover */
+}
+
+#toggle-btn-clear-log.active {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #4caf50;
+}
+
+#toggle-btnA.on,
+#toggle-btnB.on,
+#toggle-btnC.on,
+#toggle-btnD.on {
+  font-size: 15px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background-color: #00ff0086; /* Blue background */
+}
+
+#toggle-btnA.off,
+#toggle-btnB.off,
+#toggle-btnC.off,
+#toggle-btnD.off {
+  font-size: 15px;
+  border: 2px solid #00ff00;
+  background-color: #000000; /* Blue background */
+}
+
+.slider-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+input[type="range"] {
+  width: 200px;
+  margin-right: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ffffff76;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #00ff00;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #00ff00;
+}
+
+#slider-valueA,
+#slider-valueB {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+#sliderVal {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+img {
+  max-width: 80%;
+  height: auto;
+}
+
+#my-image {
+  margin-left: 10%;
+}
+
+.graph-container {
+
+  width: 60%;
+  height: 230px;
+  border: 2px solid #00ff00;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#graph {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+
+
+
+
+
+
+
+

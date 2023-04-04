@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  
+  <body class="page">
+    <div class="topnav">
+      <b class="title" style = "text-transform: uppercase;" onclick="changeColor(this)">HomePi Manual</b>
+    </div>
+
+    <div style="display: flex; flex-direction: row">
+      <div id="obs">
+
+        <div style = "display: flex; flex-direction: row;">
+            <div id="thermo"  style = "width: 40%;">
+                <h1 style = "margin-top: 3%;">STATISTICS</h1>
+      
+                <table style = "margin-top: 2%; margin-right: 2%;">
+                  <tr>
+                    <td style="width: 90%"><h3>CURRENT_TEMPERATURE:</h3></td>
+                    <td style="width: 10%; text-align: center;"><h5 id="temp-container"></h5></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 90%"><h3>CURRENT_FAN_SPEED:</h3></td>
+                    <td style="width: 10%; text-align: center;"><h5 id="fan-speed"></h5></td>
+                  </tr>
+      
+                  <tr>
+                    <td style="width: 90%"><h3>HEATER_STATUS:</h3></td>
+                    <td style="width: 10%; text-align: center;"><h5 id="heater-state"></h5></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 90%"><h3>LIGHT_STATUS:</h3></td>
+                    <td style="width: 10%; text-align: center;"><h5 id="light-state"></h5></td>
+                  </tr>
+      
+                  <tr>
+                    <td style="width: 90%"><h3>DESIRED_TEMPERATURE:</h3></td>
+                    <td style="width: 10%; text-align: center;"><h5 id="desired-temp-container"></h5></td>
+                  </tr>
+      
+                  <tr>
+                    <td style="width: 90%"><h3>DESIRED_FAN_SPEED:</h3></td>
+                    <td style="width: 10%; text-align: center;"><h5 id="desired-fan-speed"></h5></td>
+                  </tr>
+                </table>
+              </div>
+      
+              <div class="graph-container" style = "margin: auto;">
+                  <canvas id="graph"></canvas>
+              </div>
+        </div>
+
+
+        <div id="webcam">
+          <div style="display: flex; flex-direction: column">
+            <h1>WEBCAM</h1>
+            <img id="my-image" src="#" alt="Encoded image" />
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; width: 50%">
+        <div id="controls">
+          <h1>CONTROLS</h1>
+          <div style="display: flex; flex-direction: row">
+            <div
+              style="
+                margin-left: 5px;
+                margin-right: 20px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+              "
+            >
+              <button id="toggle-btnA" class="off">OFF</button>
+              <div style="font-size: 15px; margin: 0 auto"><h3 >HEATER</h3></div>
+            </div>
+
+            <div
+              style="
+                margin-right: 20px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+              "
+            >
+              <button id="toggle-btnC" class="off">OFF</button>
+              <div style="font-size: 15px; margin: 0 auto"><h3>LIGHTS</h3></div>
+            </div>
+
+            <div
+              style="
+                margin-right: 20px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+              "
+            >
+              <button id="toggle-btnD" class="off">UNLOCKED</button>
+              <div style="font-size: 15px; margin: 0 auto"><h3>LOCK</h3></div>
+            </div>
+          </div>
+
+          <div class="slider-container">
+            <h3 for="slider">FAN_SPEED:</h3>
+            <input type="range" id="sliderA" min="0" max="100" value="50" />
+            <span id="slider-valueA"></span><span id="sliderVal">%</span>
+          </div>
+
+          <div class="slider-container">
+            <h3 for="slider">TEMPERATURE:</h3>
+            <input type="range" id="sliderB" min="18" max="27" value="22" />
+            <span id="slider-valueB">50</span><span id="sliderVal">°c</span>
+          </div>
+        </div>
+
+        <div id="console">
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              width: 100%;
+              justify-content: space-between;
+            "
+          >
+            <h1>CONSOLE</h1>
+            <button id="toggle-btn-clear-log">CLEAR-LOG</button>
+          </div>
+
+          <div id="log-container">
+            <div id="log" style = "margin: auto;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="homepage.js"></script>
+  </body>
+</html>
