@@ -58,11 +58,12 @@
 
               <div id="controls" style = "width: 50%;">
                 <h1>CONTROLS</h1>
-                <div style="display: flex; flex-direction: row">
+
+                <div style="display: flex; flex-direction: row; margin-top: 5%;">
                   <div
                     style="
-                      margin-left: 5px;
-                      margin-right: 20px;
+                      margin-left: 20%;
+                      margin-right: 10%;
                       display: flex;
                       align-items: flex-start;
                       justify-content: flex-start;
@@ -75,7 +76,7 @@
       
                   <div
                     style="
-                      margin-right: 20px;
+                      margin-right: 10%;
                       display: flex;
                       align-items: flex-start;
                       justify-content: flex-start;
@@ -88,7 +89,7 @@
       
                   <div
                     style="
-                      margin-right: 20px;
+                      margin-right: 20%;
                       display: flex;
                       align-items: flex-start;
                       justify-content: flex-start;
@@ -100,13 +101,13 @@
                   </div>
                 </div>
       
-                <div class="slider-container">
+                <div class="slider-container" style = "margin-left: 5%;">
                   <h3 for="slider">FAN_SPEED:</h3>
                   <input type="range" id="sliderA" min="0" max="100" value="50" />
                   <span id="slider-valueA"></span><span id="sliderVal">%</span>
                 </div>
       
-                <div class="slider-container">
+                <div class="slider-container" style = "margin-left: 2%;">
                   <h3 for="slider">TEMPERATURE:</h3>
                   <input type="range" id="sliderB" min="10" max="50" value="22" />
                   <span id="slider-valueB">50</span><span id="sliderVal">°c</span>
@@ -118,7 +119,7 @@
         <div id="webcam">
           <div style="display: flex; flex-direction: column">
             <h1>WEBCAM</h1>
-            <img id="my-image" src="#" alt="Encoded image" />
+            <img src="https://26d5-104-158-212-15.ngrok.io/video_feed" height="250">
           </div>
         </div>
       </div>
