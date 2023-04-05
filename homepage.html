@@ -20,10 +20,10 @@
       <div id="obs">
 
         <div style = "display: flex; flex-direction: row;">
-            <div id="thermo"  style = "width: 40%;">
+            <div id="thermo"  style = "width: 50%;">
                 <h1 style = "margin-top: 3%;">STATISTICS</h1>
       
-                <table style = "margin-top: 2%; margin-right: 2%;">
+                <table style = "margin-top: 0%; margin-right: 2%;">
                   <tr>
                     <td style="width: 90%"><h3>CURRENT_TEMPERATURE:</h3></td>
                     <td style="width: 10%; text-align: center;"><h5 id="temp-container"></h5></td>
@@ -54,8 +54,63 @@
                 </table>
               </div>
       
-              <div class="graph-container" style = "margin: auto;">
-                  <canvas id="graph"></canvas>
+
+
+              <div id="controls" style = "width: 50%;">
+                <h1>CONTROLS</h1>
+                <div style="display: flex; flex-direction: row">
+                  <div
+                    style="
+                      margin-left: 5px;
+                      margin-right: 20px;
+                      display: flex;
+                      align-items: flex-start;
+                      justify-content: flex-start;
+                      flex-direction: column;
+                    "
+                  >
+                    <button id="toggle-btnA" class="off">OFF</button>
+                    <div style="font-size: 15px; margin: 0 auto"><h3 >HEATER</h3></div>
+                  </div>
+      
+                  <div
+                    style="
+                      margin-right: 20px;
+                      display: flex;
+                      align-items: flex-start;
+                      justify-content: flex-start;
+                      flex-direction: column;
+                    "
+                  >
+                    <button id="toggle-btnC" class="off">OFF</button>
+                    <div style="font-size: 15px; margin: 0 auto"><h3>LIGHTS</h3></div>
+                  </div>
+      
+                  <div
+                    style="
+                      margin-right: 20px;
+                      display: flex;
+                      align-items: flex-start;
+                      justify-content: flex-start;
+                      flex-direction: column;
+                    "
+                  >
+                    <button id="toggle-btnD" class="off">UNLOCKED</button>
+                    <div style="font-size: 15px; margin: 0 auto"><h3>LOCK</h3></div>
+                  </div>
+                </div>
+      
+                <div class="slider-container">
+                  <h3 for="slider">FAN_SPEED:</h3>
+                  <input type="range" id="sliderA" min="0" max="100" value="50" />
+                  <span id="slider-valueA"></span><span id="sliderVal">%</span>
+                </div>
+      
+                <div class="slider-container">
+                  <h3 for="slider">TEMPERATURE:</h3>
+                  <input type="range" id="sliderB" min="10" max="50" value="22" />
+                  <span id="slider-valueB">50</span><span id="sliderVal">°c</span>
+                </div>
               </div>
         </div>
 
@@ -68,62 +123,10 @@
         </div>
       </div>
 
-      <div style="display: flex; flex-direction: column; width: 50%">
-        <div id="controls">
-          <h1>CONTROLS</h1>
-          <div style="display: flex; flex-direction: row">
-            <div
-              style="
-                margin-left: 5px;
-                margin-right: 20px;
-                display: flex;
-                align-items: flex-start;
-                justify-content: flex-start;
-                flex-direction: column;
-              "
-            >
-              <button id="toggle-btnA" class="off">OFF</button>
-              <div style="font-size: 15px; margin: 0 auto"><h3 >HEATER</h3></div>
-            </div>
+      <div style=" display: flex; flex-direction: column; width: 50%">
 
-            <div
-              style="
-                margin-right: 20px;
-                display: flex;
-                align-items: flex-start;
-                justify-content: flex-start;
-                flex-direction: column;
-              "
-            >
-              <button id="toggle-btnC" class="off">OFF</button>
-              <div style="font-size: 15px; margin: 0 auto"><h3>LIGHTS</h3></div>
-            </div>
-
-            <div
-              style="
-                margin-right: 20px;
-                display: flex;
-                align-items: flex-start;
-                justify-content: flex-start;
-                flex-direction: column;
-              "
-            >
-              <button id="toggle-btnD" class="off">UNLOCKED</button>
-              <div style="font-size: 15px; margin: 0 auto"><h3>LOCK</h3></div>
-            </div>
-          </div>
-
-          <div class="slider-container">
-            <h3 for="slider">FAN_SPEED:</h3>
-            <input type="range" id="sliderA" min="0" max="100" value="50" />
-            <span id="slider-valueA"></span><span id="sliderVal">%</span>
-          </div>
-
-          <div class="slider-container">
-            <h3 for="slider">TEMPERATURE:</h3>
-            <input type="range" id="sliderB" min="18" max="27" value="22" />
-            <span id="slider-valueB">50</span><span id="sliderVal">°c</span>
-          </div>
+        <div class="graph-container" style = "margin: auto;">    
+                <canvas id="graph"></canvas>
         </div>
 
         <div id="console">
