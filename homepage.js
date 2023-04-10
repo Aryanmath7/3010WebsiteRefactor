@@ -431,7 +431,7 @@ const otherDriv = document.getElementById('other');
 // Function to update flex-direction based on screen width
 function updateFlexDirection() {
   console.log('hello?');
-  if (window.innerWidth < 760) {
+  if (window.innerWidth < 1100) {
     contDiv.style.flexDirection = 'column';
     thermoDiv.style.width = '100%';
     otherDriv.style.width = '100%';
