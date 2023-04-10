@@ -149,6 +149,10 @@ dataRefRequests.once("value").then(function (snapshot) {
     tempSlider.style.display = "";
     fanSlider.style.display = "none";
   }
+  else{
+    tempSlider.style.display = "none";
+    fanSlider.style.display = "";
+  }
 
 });
 
