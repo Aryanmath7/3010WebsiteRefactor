@@ -1,0 +1,117 @@
+body {
+  color: #00ff00;
+  font-family: Courier, monospace;
+  font-size: 16px;
+}
+
+.container {
+  background: #000000b5; 
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #00ff00;
+}
+
+h1 {
+  font-weight: 500;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #00ff00;
+  background-color: black;
+  color: #00ff00;
+  font-family: Courier, monospace;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  padding: 10px;
+  background-color: #00ff00;
+  border: none;
+  color: black;
+  font-family: Courier, monospace;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+p {
+  font-size: small;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+/* Main styles */
+body {
+  /* img size is 50x50 */
+  background: url("https://us.123rf.com/450wm/asamask92/asamask921709/asamask92170900030/85132954-white-dash-square-seamless-on-black-background-vector-illustration.jpg") repeat 0 0;
+  background-size: 400px 400px;
+ 
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Safari 4+ */
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Fx 5+ */
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Opera 12+ */
+  animation: bg-scrolling-reverse 0.92s infinite;
+  /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
