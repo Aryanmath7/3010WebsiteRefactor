@@ -11,19 +11,25 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// Get the value of the 'username' query parameter from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const username = urlParams.get('username');
+
+
 const database = firebase.database();
-const dataRefRequests = database.ref("Requests");
-const dataRefTL = database.ref("RPITL");
-const dataLog = database.ref("logs");
-const dataRT = database.ref("videoStream");
+
+const databaseMain = database.ref('users/'+username);
+const dataRefTL = database.ref('users/'+username+'/RPITL');
+const dataRefRequests = database.ref('users/'+username+'/Requests');
+const dataLog = database.ref('users/'+username +'/logs');
 
 const buttonA = document.getElementById("toggle-btnA");
 const buttonB = document.getElementById("toggle-btnB");
 const buttonC = document.getElementById("toggle-btnC");
 const buttonD = document.getElementById("toggle-btnD");
+const titleCont = document.getElementById("automan");
 
 const MAX_LOG_MESSAGES = 100; // Maximum number of log messages to display
-
 const log = document.getElementById("log");
 
 function logMessage(message) {
@@ -69,19 +75,6 @@ dataLog.on("value", (snapshot) => {
   log.innerHTML = value.logString;
 });
 
-// dataRT.on('value', (snapshot) => {
-//     var value = snapshot.val();
-//     console.log(value.realTimeScreenshot);
-
-//     var imageElement = document.getElementById("my-image");
-
-//     var screenshotB64 = value.realTimeScreenshot;
-//     var screenshotBytes = Uint8Array.from(atob(screenshotB64), c => c.charCodeAt(0));
-//     var screenshotBlob = new Blob([screenshotBytes], { type: 'image/png' });
-//     var screenshotUrl = URL.createObjectURL(screenshotBlob);
-
-//     imageElement.src = screenshotUrl;
-// });
 
 var imageElement = document.getElementById("my-image");
 
@@ -106,19 +99,19 @@ function getImage() {
     },
   });
 }
-
 setInterval(getImage, 100);
 
+//set all initial
 dataRefRequests.once("value").then(function (snapshot) {
   var value = snapshot.val();
 
-  document.getElementById("slider-valueA").innerHTML = value.desiredFanSpeedA;
-  document.getElementById("sliderA").value = value.desiredFanSpeedA;
+  document.getElementById("slider-valueA").innerHTML = value.desiredFanSpeed;
+  document.getElementById("sliderA").value = value.desiredFanSpeed;
 
-  document.getElementById("slider-valueB").innerHTML = value.desiredTempA;
-  document.getElementById("sliderB").value = value.desiredTempA;
+  document.getElementById("slider-valueB").innerHTML = value.desiredTemp;
+  document.getElementById("sliderB").value = value.desiredTemp;
 
-  if (value.desiredHeaterStatusA == true) {
+  if (value.desiredHeaterState == true) {
     buttonA.classList.remove("off");
     buttonA.classList.add("on");
     buttonA.textContent = "ON";
@@ -128,7 +121,7 @@ dataRefRequests.once("value").then(function (snapshot) {
     buttonA.textContent = "OFF";
   }
 
-  if (value.desiredLightStatusA == true) {
+  if (value.desiredLightState == true) {
     buttonC.classList.remove("off");
     buttonC.classList.add("on");
     buttonC.textContent = "ON";
@@ -138,7 +131,7 @@ dataRefRequests.once("value").then(function (snapshot) {
     buttonC.textContent = "OFF";
   }
 
-  if (value.desiredLockStatusA == true) {
+  if (value.desiredLockState == true) {
     buttonD.classList.remove("off");
     buttonD.classList.add("on");
     buttonD.textContent = "LOCKED";
@@ -147,10 +140,26 @@ dataRefRequests.once("value").then(function (snapshot) {
     buttonD.classList.add("off");
     buttonD.textContent = "UNLOCKED";
   }
+
+  if (value.isAuto == true){
+    titleCont.classList.toggle("clicked");
+    titleCont.textContent = "HomePi Automatic";
+    buttonA.textContent = "AUTO";
+    buttonC.textContent = "AUTO";
+    tempSlider.style.display = "";
+    fanSlider.style.display = "none";
+  }
+  else{
+    tempSlider.style.display = "none";
+    fanSlider.style.display = "";
+  }
+
 });
+
 
 let isManual = true;
 var sliderA = document.getElementById("sliderA");
+var fanSlider = document.getElementById("fanSlider");
 var sliderValueA = document.getElementById("slider-valueA");
 
 sliderValueA.innerHTML = sliderA.value; // Set the initial value of the slider
@@ -160,7 +169,7 @@ sliderA.oninput = function () {
     sliderValueA.innerHTML = this.value; // Update the slider value in real-time
     dataRefRequests
       .update({
-        desiredFanSpeedA: Number(this.value),
+        desiredFanSpeed: Number(this.value),
       })
       .then(() => {
         console.log("Update successful");
@@ -173,6 +182,7 @@ sliderA.oninput = function () {
 };
 
 var sliderB = document.getElementById("sliderB");
+var tempSlider = document.getElementById("tempSlider");
 var sliderValueB = document.getElementById("slider-valueB");
 
 sliderValueB.innerHTML = sliderB.value; // Set the initial value of the slider
@@ -182,7 +192,7 @@ sliderB.oninput = function () {
     sliderValueB.innerHTML = this.value; // Update the slider value in real-time
     dataRefRequests
       .update({
-        desiredTempA: Number(this.value),
+        desiredTemp: Number(this.value),
       })
       .then(() => {
         console.log("Update successful");
@@ -214,7 +224,7 @@ buttonA.addEventListener("click", function () {
 
     dataRefRequests
       .update({
-        desiredHeaterStatusA: heatBoolean,
+        desiredHeaterState: heatBoolean,
       })
       .then(() => {
         console.log("Update successful");
@@ -246,7 +256,7 @@ buttonC.addEventListener("click", function () {
 
     dataRefRequests
       .update({
-        desiredLightStatusA: lightBoolean,
+        desiredLightState: lightBoolean,
       })
       .then(() => {
         console.log("Update successful");
@@ -276,7 +286,7 @@ buttonD.addEventListener("click", function () {
 
   dataRefRequests
     .update({
-      desiredLockStatusA: lockBoolean,
+      desiredLockState: lockBoolean,
     })
     .then(() => {
       console.log("Update successful");
@@ -316,12 +326,16 @@ function changeColor(element) {
     element.textContent = "HomePi Manual";
     buttonA.textContent = "OFF";
     buttonC.textContent = "OFF";
+    tempSlider.style.display = "none";
+    fanSlider.style.display = "";
     isManual = true;
     logMessage("Mode changed to: " + element.textContent);
   } else {
     element.textContent = "HomePi Automatic";
     buttonA.textContent = "AUTO";
     buttonC.textContent = "AUTO";
+    tempSlider.style.display = "";
+    fanSlider.style.display = "none";
     isManual = false;
     logMessage("Mode changed to: " + element.textContent);
   }
@@ -408,4 +422,29 @@ function updateChart() {
 
 // Start updating the chart
 updateChart();
+
+
+const contDiv = document.getElementById('cont');
+const thermoDiv = document.getElementById('obs');
+const otherDriv = document.getElementById('other');
+
+// Function to update flex-direction based on screen width
+function updateFlexDirection() {
+  console.log('hello?');
+  if (window.innerWidth < 760) {
+    contDiv.style.flexDirection = 'column';
+    thermoDiv.style.width = '100%';
+    otherDriv.style.width = '100%';
+  } else {
+    contDiv.style.flexDirection = 'row';
+    thermoDiv.style.width = '50%';
+    otherDriv.style.width = '50%';
+  }
+}
+
+// Call the function on page load
+updateFlexDirection();
+
+// Call the function on window resize
+window.addEventListener('resize', updateFlexDirection);
 

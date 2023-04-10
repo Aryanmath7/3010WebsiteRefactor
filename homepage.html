@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <title>HomePi</title>
     <link rel="stylesheet" type="text/css" href="homepage.css" />
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
@@ -13,12 +13,11 @@
   
   <body class="page">
     <div class="topnav">
-      <b class="title" style = "text-transform: uppercase;" onclick="changeColor(this)">HomePi Manual</b>
+      <b id = "automan" class="title" style = "text-transform: uppercase;" onclick="changeColor(this)">HomePi Manual</b>
     </div>
 
-    <div style="display: flex; flex-direction: row">
+    <div id = "cont" style="display: flex;">
       <div id="obs">
-
         <div style = "display: flex; flex-direction: row;">
             <div id="thermo"  style = "width: 50%;">
                 <h1 style = "margin-top: 3%;">STATISTICS</h1>
@@ -53,8 +52,6 @@
                   </tr>
                 </table>
               </div>
-      
-
 
               <div id="controls" style = "width: 50%;">
                 <h1>CONTROLS</h1>
@@ -101,13 +98,13 @@
                   </div>
                 </div>
       
-                <div class="slider-container" style = "margin-left: 5%;">
+                <div id = "fanSlider" class="slider-container" style = "margin-left: 5%;">
                   <h3 for="slider">FAN_SPEED:</h3>
                   <input type="range" id="sliderA" min="0" max="100" value="50" />
                   <span id="slider-valueA"></span><span id="sliderVal">%</span>
                 </div>
       
-                <div class="slider-container" style = "margin-left: 2%;">
+                <div id = "tempSlider" class="slider-container" style = "margin-left: 2%;">
                   <h3 for="slider">TEMPERATURE:</h3>
                   <input type="range" id="sliderB" min="10" max="50" value="22" />
                   <span id="slider-valueB">50</span><span id="sliderVal">°c</span>
@@ -124,7 +121,7 @@
         </div>
       </div>
 
-      <div style=" display: flex; flex-direction: column; width: 50%">
+      <div id = "other" style=" display: flex; flex-direction: column; width: 50%">
 
         <div class="graph-container" style = "margin: auto;">    
                 <canvas id="graph"></canvas>
