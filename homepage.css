@@ -153,6 +153,21 @@ h5 {
   padding: 10px 20px; /* Add some padding */
   cursor: pointer; /* Add cursor on hover */
 }
+@media (max-width: 500px) {
+  .buttoncont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+  }
+}
+@media (min-width: 500px) {
+  .buttoncont {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+  }
+}
 
 #toggle-btn-clear-log {
   width: 120px;
@@ -175,7 +190,9 @@ h5 {
 #toggle-btnB.on,
 #toggle-btnC.on,
 #toggle-btnD.on {
-  font-size: 15px;
+  font-size: 75%;
+  width: 100%;
+  height: 100%;
   border: 2px solid #ffffff;
   color: #ffffff;
   background-color: #00ff0086; /* Blue background */
@@ -185,7 +202,9 @@ h5 {
 #toggle-btnB.off,
 #toggle-btnC.off,
 #toggle-btnD.off {
-  font-size: 15px;
+  font-size: 75%;
+  width: 100%;
+  height: 100%;
   border: 2px solid #00ff00;
   background-color: #000000; /* Blue background */
 }
