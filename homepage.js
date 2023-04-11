@@ -1,12 +1,12 @@
 // Initialize Firebase
-var firebaseConfig = {
-  apiKey: "AIzaSyBUvBfwHh9EU7G0p9JWFql96sxLEN4xrX8",
-  authDomain: "comms-d888a.firebaseapp.com",
-  databaseURL: "https://comms-d888a-default-rtdb.firebaseio.com/",
-  projectId: "comms-d888a",
-  storageBucket: "comms-d888a.appspot.com",
-  messagingSenderId: "951543729690",
-  appId: "1:951543729690:web:6b235bacbd1d90daaecba3",
+const firebaseConfig = {
+  apiKey: "AIzaSyAL89JGXu8sZvu4aGC3q_7iGuYfSFwpAKg",
+  authDomain: "l2g4finaldemo.firebaseapp.com",
+  databaseURL: "https://l2g4finaldemo-default-rtdb.firebaseio.com",
+  projectId: "l2g4finaldemo",
+  storageBucket: "l2g4finaldemo.appspot.com",
+  messagingSenderId: "729348277533",
+  appId: "1:729348277533:web:f27ce812662470f51c4df4"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -22,6 +22,7 @@ const databaseMain = database.ref('users/'+username);
 const dataRefTL = database.ref('users/'+username+'/RPITL');
 const dataRefRequests = database.ref('users/'+username+'/Requests');
 const dataLog = database.ref('users/'+username +'/logs');
+const dataFD = database.ref('users/'+username+'/RPIDoorLock');
 
 const buttonA = document.getElementById("toggle-btnA");
 const buttonB = document.getElementById("toggle-btnB");
@@ -59,8 +60,7 @@ dataRefTL.on("value", (snapshot) => {
   var value = snapshot.val();
   // Display the value on the HTML page
   document.getElementById("temp-container").innerHTML = value.curTemp;
-  document.getElementById("desired-temp-container").innerHTML =
-    value.desiredTemp;
+
   document.getElementById("heater-state").innerHTML = String(
     value.heaterState
   ).toUpperCase();
@@ -68,9 +68,14 @@ dataRefTL.on("value", (snapshot) => {
     value.lightState
   ).toUpperCase();
   document.getElementById("fan-speed").innerHTML = value.fanSpeed;
-  document.getElementById("desired-fan-speed").innerHTML =
-    value.desiredFanSpeed;
 });
+
+dataFD.on("value", (snapshot) => {
+  var value = snapshot.val();
+  document.getElementById("lock-state").innerHTML = String(value.lockState).toUpperCase();
+});
+
+
 
 dataLog.on("value", (snapshot) => {
   var value = snapshot.val();

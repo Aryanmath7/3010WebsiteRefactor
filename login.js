@@ -1,14 +1,13 @@
 // Initialize Firebase
-var firebaseConfig = {
-  apiKey: "AIzaSyBUvBfwHh9EU7G0p9JWFql96sxLEN4xrX8",
-  authDomain: "comms-d888a.firebaseapp.com",
-  databaseURL: "https://comms-d888a-default-rtdb.firebaseio.com/",
-  projectId: "comms-d888a",
-  storageBucket: "comms-d888a.appspot.com",
-  messagingSenderId: "951543729690",
-  appId: "1:951543729690:web:6b235bacbd1d90daaecba3",
+const firebaseConfig = {
+  apiKey: "AIzaSyAL89JGXu8sZvu4aGC3q_7iGuYfSFwpAKg",
+  authDomain: "l2g4finaldemo.firebaseapp.com",
+  databaseURL: "https://l2g4finaldemo-default-rtdb.firebaseio.com",
+  projectId: "l2g4finaldemo",
+  storageBucket: "l2g4finaldemo.appspot.com",
+  messagingSenderId: "729348277533",
+  appId: "1:729348277533:web:f27ce812662470f51c4df4"
 };
-
 firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
@@ -34,6 +33,7 @@ function login(event) {
       }
     } else {
       alert("Invalid username or password."); // Show an error message
+      
     }
   }, error => {
     console.error(error); // Log any errors that occur while querying Firebase
